@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <NoWarn>2008;NU5105</NoWarn>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <IsShipping>true</IsShipping>
+        <IsShippingPackage>true</IsShippingPackage>
+        <IncludeBuildOutput>False</IncludeBuildOutput>
+        <IncludeSource>False</IncludeSource>
+        <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+        <EnableDefaultItems>False</EnableDefaultItems>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>Itmo.Dev.Templates</PackageId>
+        <Authors>itmo-is-dev</Authors>
+        <Description>Common templates for itmo-is-dev projects</Description>
+        <RepositoryUrl>https://github.com/itmo-is-dev/templates</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/itmo-is-dev/templates</PackageProjectUrl>
+        <PackageType>Template</PackageType>
+        <SuppressDependenciesWhenPacking>True</SuppressDependenciesWhenPacking>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Remove="Microsoft.NETCore.App"/>
+        <Content Include="content\**">
+            <PackagePath>content</PackagePath>
+        </Content>
+    </ItemGroup>
+
+</Project>
