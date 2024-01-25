@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\Itmo.Dev.Templates.Hexagonal.Application.Models\Itmo.Dev.Templates.Hexagonal.Application.Models.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!--#if (KafkaEnabled)-->
+      <PackageReference Include="Itmo.Dev.Platform.Events" />
+        <!--#endif-->
+    </ItemGroup>
+
+</Project>

@@ -1,39 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup>
-        <NoWarn>2008;NU5105</NoWarn>
-        <NoPackageAnalysis>true</NoPackageAnalysis>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <PropertyGroup>
-        <IsPackable>true</IsPackable>
-        <IsShipping>true</IsShipping>
-        <IsShippingPackage>true</IsShippingPackage>
-        <IncludeBuildOutput>False</IncludeBuildOutput>
-        <IncludeSource>False</IncludeSource>
-        <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
-        <EnableDefaultItems>False</EnableDefaultItems>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PackageId>Itmo.Dev.Templates</PackageId>
-        <Authors>itmo-is-dev</Authors>
-        <Description>Common templates for itmo-is-dev projects</Description>
-        <RepositoryUrl>https://github.com/itmo-is-dev/templates</RepositoryUrl>
-        <PackageProjectUrl>https://github.com/itmo-is-dev/templates</PackageProjectUrl>
         <PackageType>Template</PackageType>
-        <SuppressDependenciesWhenPacking>True</SuppressDependenciesWhenPacking>
+        <PackageId>Itmo.Dev.Templates</PackageId>
+        <Title>Itmo.Dev.Templates</Title>
+        <Authors>itmo-is-dev</Authors>
+        <Description>Common project templates for itmo-is-dev services</Description>
+        <PackageTags>dotnet-new;templates;itmo-is-dev</PackageTags>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PatchVersion>0</PatchVersion>
+        <PackageVersion>1.0.$(PatchVersion)</PackageVersion>
+        <PackageReleaseNotes>
+            Added itmo.dev.hexagonal package
+        </PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Remove="Microsoft.NETCore.App"/>
-        <Content Include="content\**">
-            <PackagePath>content</PackagePath>
-        </Content>
+        <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**"/>
+        <Compile Remove="**\*"/>
     </ItemGroup>
 
 </Project>

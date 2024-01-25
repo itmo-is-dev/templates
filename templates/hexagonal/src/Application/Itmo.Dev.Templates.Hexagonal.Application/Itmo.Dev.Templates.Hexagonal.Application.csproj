@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\Itmo.Dev.Templates.Hexagonal.Application.Abstractions\Itmo.Dev.Templates.Hexagonal.Application.Abstractions.csproj"/>
+        <ProjectReference Include="..\Itmo.Dev.Templates.Hexagonal.Application.Contracts\Itmo.Dev.Templates.Hexagonal.Application.Contracts.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!--#if (BackgroundTasksEnabled)-->
+        <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks"/>
+        <!--#endif-->
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
+    </ItemGroup>
+
+</Project>
