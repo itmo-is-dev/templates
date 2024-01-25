@@ -25,14 +25,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence", "src\Infrastructure\Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence\Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.csproj", "{E0C7A0FA-E3B6-4C7C-8360-CD72806AAC66}"
 EndProject
+#if GrpcEnabled
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Hexagonal.Presentation.Grpc", "src\Presentation\Itmo.Dev.Templates.Hexagonal.Presentation.Grpc\Itmo.Dev.Templates.Hexagonal.Presentation.Grpc.csproj", "{CC78330E-636F-48B2-A1AE-C8E6566275DD}"
 EndProject
+#endif
+#if KafkaEnabled
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Hexagonal.Presentation.Kafka", "src\Presentation\Itmo.Dev.Templates.Hexagonal.Presentation.Kafka\Itmo.Dev.Templates.Hexagonal.Presentation.Kafka.csproj", "{59AFF02F-828D-4BF6-A5AC-C56A1F30EF6B}"
 EndProject
+#endif
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Hexagonal", "src\Itmo.Dev.Templates.Hexagonal\Itmo.Dev.Templates.Hexagonal.csproj", "{AE85F8D2-4986-40AE-A92C-683CE1DB59BC}"
 EndProject
+#if HttpEnabled
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Hexagonal.Presentation.Http", "src\Presentation\Itmo.Dev.Templates.Hexagonal.Presentation.Http\Itmo.Dev.Templates.Hexagonal.Presentation.Http.csproj", "{AE079871-926E-427E-9F16-8FFD3C6B6CC2}"
 EndProject
+#endif
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,8 +53,12 @@ Global
 		{6612692B-A111-4856-A058-9CF4C2672F92} = {A5DDAC88-3B8F-4674-8E0C-F8A50A52ACD3}
 		{683CE8ED-DAEA-4EAB-B1B4-FF5098763CFF} = {A5DDAC88-3B8F-4674-8E0C-F8A50A52ACD3}
 		{E0C7A0FA-E3B6-4C7C-8360-CD72806AAC66} = {6612692B-A111-4856-A058-9CF4C2672F92}
+#if GrpcEnabled
 		{CC78330E-636F-48B2-A1AE-C8E6566275DD} = {683CE8ED-DAEA-4EAB-B1B4-FF5098763CFF}
+#endif
+#if KafkaEnabled
 		{59AFF02F-828D-4BF6-A5AC-C56A1F30EF6B} = {683CE8ED-DAEA-4EAB-B1B4-FF5098763CFF}
+#endif
 		{AE85F8D2-4986-40AE-A92C-683CE1DB59BC} = {A5DDAC88-3B8F-4674-8E0C-F8A50A52ACD3}
 		{AE079871-926E-427E-9F16-8FFD3C6B6CC2} = {683CE8ED-DAEA-4EAB-B1B4-FF5098763CFF}
 	EndGlobalSection
@@ -73,14 +83,18 @@ Global
 		{E0C7A0FA-E3B6-4C7C-8360-CD72806AAC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0C7A0FA-E3B6-4C7C-8360-CD72806AAC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0C7A0FA-E3B6-4C7C-8360-CD72806AAC66}.Release|Any CPU.Build.0 = Release|Any CPU
+#if GrpcEnabled
 		{CC78330E-636F-48B2-A1AE-C8E6566275DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC78330E-636F-48B2-A1AE-C8E6566275DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC78330E-636F-48B2-A1AE-C8E6566275DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC78330E-636F-48B2-A1AE-C8E6566275DD}.Release|Any CPU.Build.0 = Release|Any CPU
+#endif
+#if KafkaEnabled
 		{59AFF02F-828D-4BF6-A5AC-C56A1F30EF6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59AFF02F-828D-4BF6-A5AC-C56A1F30EF6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59AFF02F-828D-4BF6-A5AC-C56A1F30EF6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59AFF02F-828D-4BF6-A5AC-C56A1F30EF6B}.Release|Any CPU.Build.0 = Release|Any CPU
+#endif
 		{AE85F8D2-4986-40AE-A92C-683CE1DB59BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AE85F8D2-4986-40AE-A92C-683CE1DB59BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE85F8D2-4986-40AE-A92C-683CE1DB59BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
