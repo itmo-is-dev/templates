@@ -18,6 +18,7 @@
         <Authors>itmo-is-dev</Authors>
         <Description>Common project templates for itmo-is-dev services</Description>
         <PackageTags>dotnet-new;templates;itmo-is-dev</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <PropertyGroup>
