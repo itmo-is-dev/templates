@@ -41,11 +41,14 @@ builder.Services.AddPresentationGrpc();
 #if KafkaEnabled
 builder.Services.AddPresentationKafka(builder.Configuration);
 #endif
-
+#if HttpEnabled
 builder.Services
     .AddControllers()
     .AddNewtonsoftJson()
     .AddPresentationHttp();
+
+builder.Services.AddSwaggerGen().AddEndpointsApiExplorer();
+#endif
 
 #if BackgroundTasksEnabled
 builder.Services.AddPlatformBackgroundTasks(configurator => configurator
@@ -75,12 +78,19 @@ await using (AsyncServiceScope scope = app.Services.CreateAsyncScope())
 #endif
 
 app.UseRouting();
+#if HttpEnabled
+app.UseSwagger();
+app.UseSwaggerUI();
+#endif
 #if SentryEnabled
 app.UsePlatformSentryTracing(app.Configuration);
 #endif
 
 #if GrpcEnabled
 app.UsePresentationGrpc();
+#endif
+#if HttpEnabled
+app.MapControllers();
 #endif
 
 await app.RunAsync();

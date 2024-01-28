@@ -35,6 +35,9 @@
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
     <PackageVersion Include="SourceKit.Generators.Builder" Version="1.1.24" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435" />
+    <!--#if (HttpEnabled)-->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <!--#endif-->
     <PackageVersion Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 </Project>

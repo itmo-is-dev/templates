@@ -21,6 +21,7 @@
         <!--#endif-->
         <!--#if (HttpEnabled)-->
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
         <!--#endif-->
     </ItemGroup>
 

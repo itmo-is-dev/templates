@@ -7,6 +7,7 @@
             YandexCloudEnabled;
             SentryEnabled;
             BackgroundTasksEnabled;
+            HttpEnabled;
         </DefineConstants>
         <TEMPLATE_TARGET_FRAMEWORK>net7.0</TEMPLATE_TARGET_FRAMEWORK>
     </PropertyGroup>
