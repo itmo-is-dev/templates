@@ -23,9 +23,6 @@
       "defaultValue": "net8.0",
       "choices": [
         {
-          "choice": "net7.0"
-        },
-        {
           "choice": "net8.0"
         }
       ]

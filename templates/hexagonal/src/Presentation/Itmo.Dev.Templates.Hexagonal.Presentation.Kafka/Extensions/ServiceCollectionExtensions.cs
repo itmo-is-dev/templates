@@ -18,24 +18,23 @@ public static class ServiceCollectionExtensions
 
         // TODO: add consumers and producers
         // consumer example:
-        // .AddConsumer<MessageKey, MessageValue>(selector => selector
-        //     .HandleWith<MessageHandler>()
+        // .AddConsumer(b => b
+        //     .WithKey<MessageKey>()
+        //     .WithValue<MessageValue>()
+        //     .WithConfiguration(configuration.GetSection($"{consumerKey}:MessageName"))
         //     .DeserializeKeyWithProto()
         //     .DeserializeValueWithProto()
-        //     .UseNamedOptionsConfiguration(
-        //         "MessageName",
-        //         configuration.GetSection($"{consumerKey}:MessageName"),
-        //         c => c.WithGroup(group)))
+        //     .HandleWith<MessageHandler>())
         //
         // producer example:
-        // .AddProducer<MessageKey, MessageValue>(selector => selector
+        // .AddProducer(b => b
+        //     .WithKey<MessageKey>()
+        //     .WithValue<MessageValue>()
+        //     .WithConfiguration(configuration.GetSection($"{producerKey}:MessageName"))
         //     .SerializeKeyWithProto()
-        //     .SerializeValueWithProto()
-        //     .UseNamedOptionsConfiguration(
-        //         "MessageName",
-        //         configuration.GetSection($"{producerKey}:MessageName")))
-        collection.AddKafka(builder => builder
-            .ConfigureOptions(b => b.BindConfiguration("Presentation:Kafka")));
+        //     .SerializeValueWithProto())
+        collection.AddPlatformKafka(builder => builder
+            .ConfigureOptions(configuration.GetSection("Presentation:Kafka")));
 
         return collection;
     }

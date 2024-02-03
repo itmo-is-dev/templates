@@ -13,7 +13,9 @@ using Itmo.Dev.Platform.YandexCloud.Extensions;
 #endif
 using Itmo.Dev.Templates.Hexagonal.Application.Extensions;
 using Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.Extensions;
+#if HttpEnabled
 using Itmo.Dev.Templates.Hexagonal.Presentation.Http.Extensions;
+#endif
 #if GrpcEnabled
 using Itmo.Dev.Templates.Hexagonal.Presentation.Grpc.Extensions;
 #endif

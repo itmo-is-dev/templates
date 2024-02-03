@@ -25,7 +25,7 @@
         <PatchVersion>0</PatchVersion>
         <PackageVersion>1.0.$(PatchVersion)</PackageVersion>
         <PackageReleaseNotes>
-            Added itmo.dev.hexagonal package
+            Updated platform
         </PackageReleaseNotes>
     </PropertyGroup>
 
