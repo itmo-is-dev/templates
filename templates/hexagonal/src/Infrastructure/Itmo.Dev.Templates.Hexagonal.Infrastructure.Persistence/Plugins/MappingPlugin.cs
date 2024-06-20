@@ -1,4 +1,4 @@
-using Itmo.Dev.Platform.Postgres.Plugins;
+using Itmo.Dev.Platform.Persistence.Postgres.Plugins;
 using Npgsql;
 
 namespace Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.Plugins;
@@ -7,7 +7,7 @@ namespace Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.Plugins;
 ///     Plugin for configuring NpgsqlDataSource's mappings
 ///     ie: enums, composite types
 /// </summary>
-public class MappingPlugin : IDataSourcePlugin
+public class MappingPlugin : IPostgresDataSourcePlugin
 {
-    public void Configure(NpgsqlDataSourceBuilder builder) { }
+    public void Configure(NpgsqlDataSourceBuilder dataSource) { }
 }

@@ -2,6 +2,9 @@
 
 #if BackgroundTasksEnabled
 using Itmo.Dev.Platform.BackgroundTasks.Extensions;
+using Itmo.Dev.Platform.BackgroundTasks.Hangfire.Extensions;
+using Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres.Extensions;
+using Itmo.Dev.Platform.BackgroundTasks.Postgres.Extensions;
 #endif
 using Itmo.Dev.Platform.Common.Extensions;
 #if KafkaEnabled
@@ -35,6 +38,8 @@ await builder.AddYandexCloudConfigurationAsync();
 builder.Services.AddOptions<JsonSerializerSettings>();
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<JsonSerializerSettings>>().Value);
 
+builder.Services.AddPlatform();
+
 builder.Services.AddApplication();
 builder.Services.AddInfrastructurePersistence();
 #if GrpcEnabled
@@ -54,8 +59,11 @@ builder.Services.AddSwaggerGen().AddEndpointsApiExplorer();
 
 #if BackgroundTasksEnabled
 builder.Services.AddPlatformBackgroundTasks(configurator => configurator
-    .ConfigurePersistence(builder.Configuration.GetSection("Infrastructure:BackgroundTasks:Persistence"))
-    .ConfigureScheduling(builder.Configuration.GetSection("Infrastructure:BackgroundTasks:Scheduling"))
+    .UsePostgresPersistence(postgres => postgres.BindConfiguration("Infrastructure:BackgroundTasks:Persistence"))
+    .ConfigureScheduling(scheduling => scheduling.BindConfiguration("Infrastructure:BackgroundTasks:Scheduling"))
+    .UseHangfireScheduling(hangfire => hangfire
+        .ConfigureOptions(o => o.BindConfiguration("Infrastructure:BackgroundTasks:Scheduling:Hangfire"))
+        .UsePostgresJobStorage())
     .ConfigureExecution(builder.Configuration.GetSection("Infrastructure:BackgroundTasks:Execution"))
     .AddApplicationBackgroundTasks());
 #endif
@@ -71,13 +79,6 @@ builder.AddPlatformSentry();
 #endif
 
 WebApplication app = builder.Build();
-
-#if BackgroundTasksEnabled
-await using (AsyncServiceScope scope = app.Services.CreateAsyncScope())
-{
-    await scope.UsePlatformBackgroundTasksAsync(default);
-}
-#endif
 
 app.UseRouting();
 #if HttpEnabled

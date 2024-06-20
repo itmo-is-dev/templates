@@ -5,7 +5,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Itmo.Dev.Platform.Postgres"/>
+        <PackageReference Include="Itmo.Dev.Platform.Persistence.Postgres" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions"/>
     </ItemGroup>
 

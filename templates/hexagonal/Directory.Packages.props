@@ -15,18 +15,20 @@
     <!--#endif-->
     <PackageVersion Include="Itmo.Dev.Editorconfig" Version="1.0.2" />
     <!--#if (BackgroundTasksEnabled)-->
-    <PackageVersion Include="Itmo.Dev.Platform.BackgroundTasks" Version="1.1.89" />
+    <PackageVersion Include="Itmo.Dev.Platform.BackgroundTasks" Version="2.0.111" />
+    <PackageVersion Include="Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres" Version="2.0.111" />
+    <PackageVersion Include="Itmo.Dev.Platform.BackgroundTasks.Postgres" Version="2.0.111" />
     <!--#endif-->
     <!--#if (KafkaEnabled)-->
-    <PackageVersion Include="Itmo.Dev.Platform.Events" Version="1.0.89" />
+    <PackageVersion Include="Itmo.Dev.Platform.Events" Version="1.0.111" />
     <!--#endif-->
     <!--#if (KafkaEnabled)-->
-    <PackageVersion Include="Itmo.Dev.Platform.Kafka" Version="2.0.89" />
+    <PackageVersion Include="Itmo.Dev.Platform.Kafka" Version="2.0.111" />
     <!--#endif-->
-    <PackageVersion Include="Itmo.Dev.Platform.Logging" Version="1.0.89" />
-    <PackageVersion Include="Itmo.Dev.Platform.Postgres" Version="1.1.89" />
+    <PackageVersion Include="Itmo.Dev.Platform.Logging" Version="1.0.111" />
+    <PackageVersion Include="Itmo.Dev.Platform.Persistence.Postgres" Version="1.0.111" />
     <!--#if (YandexCloudEnabled)-->
-    <PackageVersion Include="Itmo.Dev.Platform.YandexCloud" Version="1.0.89" />
+    <PackageVersion Include="Itmo.Dev.Platform.YandexCloud" Version="1.0.111" />
     <!--#endif-->
     <!--#if (HttpEnabled)-->
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.15" />
