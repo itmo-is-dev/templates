@@ -15,8 +15,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <!--#if (BackgroundTasksEnabled)-->
         <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres" />
         <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks.Postgres" />
+        <!--#endif-->
         <PackageReference Include="Itmo.Dev.Platform.Logging"/>
         <!--#if (YandexCloudEnabled)-->
         <PackageReference Include="Itmo.Dev.Platform.YandexCloud"/>
