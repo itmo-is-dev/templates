@@ -66,10 +66,6 @@
   },
   "sources": [
     {
-      "source": "./.gitignore",
-      "target": "./.gitignore"
-    },
-    {
       "modifiers": [
         {
           "condition": "(!BackgroundTasksEnabled)",
@@ -102,6 +98,14 @@
           ]
         }
       ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": ".gitignore"
+    },
+    {
+      "path": ".editorconfig"
     }
   ],
   "postActions": [
