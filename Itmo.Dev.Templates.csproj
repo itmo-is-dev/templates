@@ -23,9 +23,9 @@
 
     <PropertyGroup>
         <PatchVersion>0</PatchVersion>
-        <PackageVersion>1.0.$(PatchVersion)</PackageVersion>
+        <PackageVersion>1.1.$(PatchVersion)</PackageVersion>
         <PackageReleaseNotes>
-            Updated platform
+            Added Slim template
         </PackageReleaseNotes>
     </PropertyGroup>
 

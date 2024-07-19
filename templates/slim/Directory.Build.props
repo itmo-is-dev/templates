@@ -1,0 +1,39 @@
+<Project>
+    <!--#if (false)-->
+    <PropertyGroup>
+        <DefineConstants>
+            KafkaEnabled;
+            GrpcEnabled;
+            YandexCloudEnabled;
+            SentryEnabled;
+            BackgroundTasksEnabled;
+            HttpEnabled;
+        </DefineConstants>
+        <TEMPLATE_TARGET_FRAMEWORK>net8.0</TEMPLATE_TARGET_FRAMEWORK>
+    </PropertyGroup>
+    <!--#endif-->
+
+    <PropertyGroup>
+        <TargetFramework>$(TEMPLATE_TARGET_FRAMEWORK)</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <NoWarn>1591;SA1633;SA1101;SA1503;SA1309;SA1601;SA1201;SA1502;SA1127;SA1128;SA1600;SA1611;SA1604;SA1629;SA1602;</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive"/>
+        <PackageReference Include="Itmo.Dev.Editorconfig"/>
+        <PackageReference Include="System.Linq.Async"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AsseblyName).Tests"/>
+    </ItemGroup>
+</Project>

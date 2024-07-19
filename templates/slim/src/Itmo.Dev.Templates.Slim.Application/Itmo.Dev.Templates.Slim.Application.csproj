@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\Itmo.Dev.Templates.Slim.Persistence\Itmo.Dev.Templates.Slim.Persistence.csproj"/>
+    </ItemGroup>
+
+    <!--#if (HttpEnabled)-->
+    <ItemGroup Label="Http">
+        <PackageReference Include="FastEndpoints"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+    </ItemGroup>
+    <!--#endif-->
+
+    <!--#if (KafkaEnabled)-->
+    <ItemGroup Label="Kafka">
+        <PackageReference Include="Itmo.Dev.Platform.Kafka"/>
+        <PackageReference Include="Grpc.Tools"/>
+    </ItemGroup>
+    <!--#endif-->
+
+    <!--#if (GrpcEnabled)-->
+    <ItemGroup Label="Grpc">
+        <PackageReference Include="Grpc.AspNetCore"/>
+        <PackageReference Include="Grpc.AspNetCore.Server.Reflection"/>
+    </ItemGroup>
+    <!--#endif-->
+
+    <!--#if (KafkaEnabled || GrpcEnabled)-->
+    <ItemGroup Label="Proto">
+        <Protobuf ProtoRoot="protos" Include="protos\**\*.proto" GrpcServices="Server"/>
+    </ItemGroup>
+    <!--#endif-->
+
+    <!--#if (BackgroundTasksEnabled)-->
+    <ItemGroup Label="BackgroundTasks">
+        <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks"/>
+        <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks.Postgres"/>
+        <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres"/>
+    </ItemGroup>
+    <!--#endif-->
+
+</Project>

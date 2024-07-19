@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "itmo-is-dev",
+  "classifications": [
+    "ASP",
+    "Slim"
+  ],
+  "name": "Slim solution",
+  "identity": "Itmo.Dev.Templates.Slim",
+  "shortName": "itmo.dev.slim",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sourceName": "Itmo.Dev.Templates.Slim",
+  "preferNameDirectory": false,
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "Target .NET framework for the project",
+      "datatype": "choice",
+      "replaces": "$(TEMPLATE_TARGET_FRAMEWORK)",
+      "defaultValue": "net8.0",
+      "choices": [
+        {
+          "choice": "net8.0"
+        }
+      ]
+    },
+    "KafkaEnabled": {
+      "type": "parameter",
+      "description": "Enable Kafka presentation",
+      "datatype": "bool",
+      "defaultValue": "true"
+    },
+    "GrpcEnabled": {
+      "type": "parameter",
+      "description": "Enable gRPC presentation",
+      "datatype": "bool",
+      "defaultValue": "true"
+    },
+    "YandexCloudEnabled": {
+      "type": "parameter",
+      "description": "Enable YandexCloud integration",
+      "datatype": "bool",
+      "defaultValue": "true"
+    },
+    "SentryEnabled": {
+      "type": "parameter",
+      "description": "Enable Sentry integration",
+      "datatype": "bool",
+      "defaultValue": "true"
+    },
+    "BackgroundTasksEnabled": {
+      "type": "parameter",
+      "description": "Enable BackgroundTasks",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "HttpEnabled": {
+      "type": "parameter",
+      "description": "Enable HTTP presentation",
+      "datatype": "bool",
+      "defaultValue": "false"
+    }
+  },
+  "sources": [
+    {
+      "source": "./.gitignore",
+      "target": "./.gitignore"
+    },
+    {
+      "modifiers": [
+        {
+          "condition": "(!BackgroundTasksEnabled)",
+          "exclude": [
+            "src/Itmo.Dev.Templates.Slim.Application/Feature/BackgroundTasks"
+          ]
+        },
+        {
+          "condition": "(!HttpEnabled)",
+          "exclude": [
+            "src/Itmo.Dev.Templates.Slim.Application/Feature/Endpoints"
+          ]
+        },
+        {
+          "condition": "(!GrpcEnabled)",
+          "exclude": [
+            "src/Itmo.Dev.Templates.Slim.Application/Feature/Grpc"
+          ]
+        },
+        {
+          "condition": "(!KafkaEnabled)",
+          "exclude": [
+            "src/Itmo.Dev.Templates.Slim.Application/Feature/Kafka"
+          ]
+        },
+        {
+          "condition": "(!GrpcEnabled && !KafkaEnabled)",
+          "exclude": [
+            "src/Itmo.Dev.Templates.Slim.Application/protos"
+          ]
+        }
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "actionId": "4EC9ECDD-EDFE-4E97-87C8-AA30802C30FD",
+      "description": "Restores solution dependencies",
+      "args": {
+        "executable": "dotnet",
+        "args": "restore",
+        "redirectStandardError": false,
+        "redirectStandardOutput": false
+      },
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore' command"
+        }
+      ],
+      "continueOnError": true
+    },
+    {
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "description": "Formats generated solution",
+      "args": {
+        "executable": "dotnet",
+        "args": "format",
+        "redirectStandardError": false,
+        "redirectStandardOutput": false
+      },
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet format' to correct all linter errors"
+        }
+      ],
+      "continueOnError": true
+    }
+  ]
+}

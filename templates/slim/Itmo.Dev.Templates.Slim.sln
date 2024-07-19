@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{01CCABE0-2FF3-4926-B553-F34120F91CD5}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CEA5BF9E-1622-45C0-8A5E-9770D8A607EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Slim.Persistence", "src\Itmo.Dev.Templates.Slim.Persistence\Itmo.Dev.Templates.Slim.Persistence.csproj", "{E7252F42-D2D8-4E73-9FDD-114D4541EE82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Slim.Application", "src\Itmo.Dev.Templates.Slim.Application\Itmo.Dev.Templates.Slim.Application.csproj", "{7B658A1B-07F7-43BA-8B1C-086EA8B12A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itmo.Dev.Templates.Slim", "src\Itmo.Dev.Templates.Slim\Itmo.Dev.Templates.Slim.csproj", "{C644CBA7-C4AD-4FF3-881B-206D450FF2BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E7252F42-D2D8-4E73-9FDD-114D4541EE82} = {CEA5BF9E-1622-45C0-8A5E-9770D8A607EC}
+		{7B658A1B-07F7-43BA-8B1C-086EA8B12A06} = {CEA5BF9E-1622-45C0-8A5E-9770D8A607EC}
+		{C644CBA7-C4AD-4FF3-881B-206D450FF2BB} = {CEA5BF9E-1622-45C0-8A5E-9770D8A607EC}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7252F42-D2D8-4E73-9FDD-114D4541EE82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7252F42-D2D8-4E73-9FDD-114D4541EE82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7252F42-D2D8-4E73-9FDD-114D4541EE82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7252F42-D2D8-4E73-9FDD-114D4541EE82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B658A1B-07F7-43BA-8B1C-086EA8B12A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B658A1B-07F7-43BA-8B1C-086EA8B12A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B658A1B-07F7-43BA-8B1C-086EA8B12A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B658A1B-07F7-43BA-8B1C-086EA8B12A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C644CBA7-C4AD-4FF3-881B-206D450FF2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C644CBA7-C4AD-4FF3-881B-206D450FF2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C644CBA7-C4AD-4FF3-881B-206D450FF2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C644CBA7-C4AD-4FF3-881B-206D450FF2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
