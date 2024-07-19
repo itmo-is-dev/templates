@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+#pragma warning disable CA1506
+
 namespace Itmo.Dev.Templates.Slim.Application;
 
 public static class ServiceCollectionExtensions
@@ -24,14 +26,17 @@ public static class ServiceCollectionExtensions
         collection.AddFastEndpoints();
         collection.AddControllers().AddNewtonsoftJson();
         collection.AddSwaggerGen().AddEndpointsApiExplorer().AddSwaggerGenNewtonsoftSupport();
+
 #endif
 #if KafkaEnabled
         collection.AddPlatformKafka(kafka => kafka
             .ConfigureOptions(configuration.GetSection("Kafka")));
+
 #endif
 #if GrpcEnabled
         collection.AddGrpc();
         collection.AddGrpcReflection();
+
 #endif
 #if BackgroundTasksEnabled
         collection.AddPlatformBackgroundTasks(configurator => configurator
@@ -41,6 +46,7 @@ public static class ServiceCollectionExtensions
                 .ConfigureOptions(builder => builder.BindConfiguration("BackgroundTasks:Hangfire"))
                 .UsePostgresJobStorage())
             .ConfigureExecution(configuration.GetSection("BackgroundTasks:Execution")));
+
 #endif
         return collection;
     }
@@ -53,10 +59,7 @@ public static class ServiceCollectionExtensions
         app.UseSwaggerUI();
 #endif
 #if GrpcEnabled
-        app.UseEndpoints(builder =>
-        {
-            builder.MapGrpcReflectionService();
-        });
+        app.MapGrpcReflectionService();
 #endif
         return app;
     }
