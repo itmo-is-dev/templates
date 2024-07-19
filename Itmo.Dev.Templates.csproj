@@ -9,6 +9,7 @@
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
     </PropertyGroup>
 
     <PropertyGroup>
