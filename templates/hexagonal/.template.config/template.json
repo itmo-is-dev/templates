@@ -39,12 +39,6 @@
       "datatype": "bool",
       "defaultValue": "true"
     },
-    "SentryEnabled": {
-      "type": "parameter",
-      "description": "Enable Sentry integration",
-      "datatype": "bool",
-      "defaultValue": "true"
-    },
     "BackgroundTasksEnabled": {
       "type": "parameter",
       "description": "Enable BackgroundTasks",
