@@ -1,7 +1,6 @@
 using Itmo.Dev.Platform.Kafka.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace Itmo.Dev.Templates.Hexagonal.Presentation.Kafka.Extensions;
 
@@ -11,10 +10,8 @@ public static class ServiceCollectionExtensions
         this IServiceCollection collection,
         IConfiguration configuration)
     {
-        const string consumerKey = "Presentation:Kafka:Consumers";
-        const string producerKey = "Presentation:Kafka:Producers";
-
-        string group = Assembly.GetExecutingAssembly().GetName().Name ?? string.Empty;
+        // const string consumerKey = "Presentation:Kafka:Consumers";
+        // const string producerKey = "Presentation:Kafka:Producers";
 
         // TODO: add consumers and producers
         // consumer example:

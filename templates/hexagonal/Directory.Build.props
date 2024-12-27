@@ -4,7 +4,6 @@
         <DefineConstants>
             KafkaEnabled;
             GrpcEnabled;
-            YandexCloudEnabled;
             SentryEnabled;
             BackgroundTasksEnabled;
             HttpEnabled;

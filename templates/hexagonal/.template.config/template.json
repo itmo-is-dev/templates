@@ -39,12 +39,6 @@
       "datatype": "bool",
       "defaultValue": "true"
     },
-    "YandexCloudEnabled": {
-      "type": "parameter",
-      "description": "Enable YandexCloud integration",
-      "datatype": "bool",
-      "defaultValue": "true"
-    },
     "SentryEnabled": {
       "type": "parameter",
       "description": "Enable Sentry integration",

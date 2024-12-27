@@ -7,12 +7,9 @@ using Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres.Extensions;
 using Itmo.Dev.Platform.BackgroundTasks.Postgres.Extensions;
 #endif
 using Itmo.Dev.Platform.Common.Extensions;
+using Itmo.Dev.Platform.Observability;
 #if KafkaEnabled
 using Itmo.Dev.Platform.Events;
-#endif
-using Itmo.Dev.Platform.Logging.Extensions;
-#if YandexCloudEnabled
-using Itmo.Dev.Platform.YandexCloud.Extensions;
 #endif
 using Itmo.Dev.Templates.Hexagonal.Application.Extensions;
 using Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.Extensions;
@@ -31,14 +28,12 @@ using Newtonsoft.Json;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddUserSecrets<Program>();
-#if YandexCloudEnabled
-await builder.AddYandexCloudConfigurationAsync();
-#endif
 
 builder.Services.AddOptions<JsonSerializerSettings>();
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<JsonSerializerSettings>>().Value);
 
 builder.Services.AddPlatform();
+builder.AddPlatformObservability();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructurePersistence();
@@ -72,11 +67,7 @@ builder.Services.AddPlatformBackgroundTasks(configurator => configurator
 builder.Services.AddPlatformEvents(b => b.AddPresentationKafkaHandlers());
 #endif
 
-builder.Host.AddPlatformSerilog(builder.Configuration);
 builder.Services.AddUtcDateTimeProvider();
-#if SentryEnabled
-builder.AddPlatformSentry();
-#endif
 
 WebApplication app = builder.Build();
 
@@ -85,9 +76,8 @@ app.UseRouting();
 app.UseSwagger();
 app.UseSwaggerUI();
 #endif
-#if SentryEnabled
-app.UsePlatformSentryTracing(app.Configuration);
-#endif
+
+app.UsePlatformObservability();
 
 #if GrpcEnabled
 app.UsePresentationGrpc();
