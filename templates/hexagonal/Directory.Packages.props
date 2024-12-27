@@ -13,7 +13,7 @@
     <!--#if (KafkaEnabled)-->
     <PackageVersion Include="Grpc.Tools" Version="2.60.0" />
     <!--#endif-->
-    <PackageVersion Include="Itmo.Dev.Editorconfig" Version="1.0.2" />
+    <PackageVersion Include="Itmo.Dev.Editorconfig" Version="1.0.8" />
     <!--#if (BackgroundTasksEnabled)-->
     <PackageVersion Include="Itmo.Dev.Platform.BackgroundTasks" Version="2.2.234" />
     <PackageVersion Include="Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres" Version="2.2.234" />
@@ -32,7 +32,12 @@
     <!--#endif-->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
-    <PackageVersion Include="SourceKit.Generators.Builder" Version="1.1.24" />
+    <PackageVersion Include="SourceKit.Generators.Builder" Version="1.2.45" />
+    <PackageVersion Include="SourceKit.Analyzers.Collections" Version="1.0.45" />
+    <PackageVersion Include="SourceKit.Analyzers.Enumerable" Version="1.0.45" />
+    <PackageVersion Include="SourceKit.Analyzers.MemberAccessibility" Version="1.0.31" />
+    <PackageVersion Include="SourceKit.Analyzers.Nullable" Version="1.0.45" />
+    <PackageVersion Include="SourceKit.Analyzers.Properties" Version="1.0.45" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.435" />
     <!--#if (HttpEnabled)-->
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
