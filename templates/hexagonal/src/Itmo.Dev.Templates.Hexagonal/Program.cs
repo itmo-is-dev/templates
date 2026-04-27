@@ -7,32 +7,35 @@ using Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres.Extensions;
 using Itmo.Dev.Platform.BackgroundTasks.Postgres.Extensions;
 #endif
 using Itmo.Dev.Platform.Common.Extensions;
-using Itmo.Dev.Platform.Observability;
-#if KafkaEnabled
-using Itmo.Dev.Platform.Events;
+#if MessagePersistenceEnabled
+using Itmo.Dev.Platform.MessagePersistence;
+using Itmo.Dev.Platform.MessagePersistence.Postgres.Extensions;
 #endif
+#if KafkaEnabled
+using Itmo.Dev.Platform.Kafka.Extensions;
+#endif
+using Itmo.Dev.Platform.Observability;
 using Itmo.Dev.Templates.Hexagonal.Application.Extensions;
+#if KafkaEnabled
+using Itmo.Dev.Templates.Hexagonal.Infrastructure.Kafka;
+#endif
 using Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.Extensions;
+#if KafkaEnabled
+using Itmo.Dev.Templates.Hexagonal.Presentation.Kafka;
+#endif
 #if HttpEnabled
 using Itmo.Dev.Templates.Hexagonal.Presentation.Http.Extensions;
 #endif
 #if GrpcEnabled
 using Itmo.Dev.Templates.Hexagonal.Presentation.Grpc.Extensions;
 #endif
-#if KafkaEnabled
-using Itmo.Dev.Templates.Hexagonal.Presentation.Kafka.Extensions;
-#endif
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
 builder.Configuration.AddUserSecrets<Program>();
 
-builder.Services.AddOptions<JsonSerializerSettings>();
-builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<JsonSerializerSettings>>().Value);
+builder.Services.AddPlatform(platform => platform
+    .WithNewtonsoftSerialization());
 
-builder.Services.AddPlatform();
 builder.AddPlatformObservability();
 
 builder.Services.AddApplication();
@@ -41,7 +44,10 @@ builder.Services.AddInfrastructurePersistence();
 builder.Services.AddPresentationGrpc();
 #endif
 #if KafkaEnabled
-builder.Services.AddPresentationKafka(builder.Configuration);
+builder.Services.AddPlatformKafka(kafka => kafka
+    .ConfigureOptions(builder.Configuration.GetSection("Presentation:Kafka"))
+    .AddInfrastructureKafkaProducers(builder.Configuration)
+    .AddPresentationKafkaConsumers(builder.Configuration));
 #endif
 #if HttpEnabled
 builder.Services
@@ -63,8 +69,11 @@ builder.Services.AddPlatformBackgroundTasks(configurator => configurator
     .AddApplicationBackgroundTasks());
 #endif
 
-#if KafkaEnabled
-builder.Services.AddPlatformEvents(b => b.AddPresentationKafkaHandlers());
+#if MessagePersistenceEnabled
+builder.Services.AddPlatformMessagePersistence(configurator => configurator
+    .WithDefaultPublisherOptions("Infrastructure:MessagePersistence:Publishers:Default")
+    .UsePostgresPersistence(postgres => postgres
+        .ConfigureOptions("Infrastructure:MessagePersistence:Persistence")));
 #endif
 
 builder.Services.AddUtcDateTimeProvider();

@@ -2,6 +2,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Application\Itmo.Dev.Templates.Hexagonal.Application\Itmo.Dev.Templates.Hexagonal.Application.csproj"/>
+        <ProjectReference Include="..\Infrastructure\Itmo.Dev.Templates.Hexagonal.Infrastructure.Kafka\Itmo.Dev.Templates.Hexagonal.Infrastructure.Kafka.csproj" />
         <ProjectReference Include="..\Infrastructure\Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence\Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.csproj"/>
         <!--#if (GrpcEnabled)-->
         <ProjectReference Include="..\Presentation\Itmo.Dev.Templates.Hexagonal.Presentation.Grpc\Itmo.Dev.Templates.Hexagonal.Presentation.Grpc.csproj"/>
@@ -15,6 +16,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <!--#if (MessagePersistenceEnabled) -->
+        <PackageReference Include="Itmo.Dev.Platform.MessagePersistence.Postgres" />
+        <!--#endif-->
         <PackageReference Include="Itmo.Dev.Platform.Observability" />
         <!--#if (BackgroundTasksEnabled)-->
         <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks.Hangfire.Postgres" />

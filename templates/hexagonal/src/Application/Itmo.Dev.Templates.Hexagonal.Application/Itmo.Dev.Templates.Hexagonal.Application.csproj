@@ -9,6 +9,9 @@
         <!--#if (BackgroundTasksEnabled)-->
         <PackageReference Include="Itmo.Dev.Platform.BackgroundTasks"/>
         <!--#endif-->
+        <!--#if (MessagePersistenceEnabled) -->
+        <PackageReference Include="Itmo.Dev.Platform.MessagePersistence" />
+        <!--#endif-->
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
     </ItemGroup>
 

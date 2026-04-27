@@ -1,0 +1,25 @@
+<Solution>
+  <Folder Name="/common/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Itmo.Dev.Templates.Hexagonal/Itmo.Dev.Templates.Hexagonal.csproj" />
+  </Folder>
+  <Folder Name="/src/Appication/">
+    <Project Path="src/Application/Itmo.Dev.Templates.Hexagonal.Application.Abstractions/Itmo.Dev.Templates.Hexagonal.Application.Abstractions.csproj" />
+    <Project Path="src/Application/Itmo.Dev.Templates.Hexagonal.Application.Contracts/Itmo.Dev.Templates.Hexagonal.Application.Contracts.csproj" />
+    <Project Path="src/Application/Itmo.Dev.Templates.Hexagonal.Application.Models/Itmo.Dev.Templates.Hexagonal.Application.Models.csproj" />
+    <Project Path="src/Application/Itmo.Dev.Templates.Hexagonal.Application/Itmo.Dev.Templates.Hexagonal.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/Infrastructure/">
+    <Project Path="src/Infrastructure/Itmo.Dev.Templates.Hexagonal.Infrastructure.Kafka/Itmo.Dev.Templates.Hexagonal.Infrastructure.Kafka.csproj" />
+    <Project Path="src/Infrastructure/Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence/Itmo.Dev.Templates.Hexagonal.Infrastructure.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/Presentation/">
+    <Project Path="src/Presentation/Itmo.Dev.Templates.Hexagonal.Presentation.Grpc/Itmo.Dev.Templates.Hexagonal.Presentation.Grpc.csproj" />
+    <Project Path="src/Presentation/Itmo.Dev.Templates.Hexagonal.Presentation.Http/Itmo.Dev.Templates.Hexagonal.Presentation.Http.csproj" />
+    <Project Path="src/Presentation/Itmo.Dev.Templates.Hexagonal.Presentation.Kafka/Itmo.Dev.Templates.Hexagonal.Presentation.Kafka.csproj" />
+  </Folder>
+</Solution>

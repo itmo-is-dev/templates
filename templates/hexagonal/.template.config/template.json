@@ -17,15 +17,15 @@
   "symbols": {
     "Framework": {
       "type": "parameter",
-      "description": "Target .NET framework for the project",
+      "description": "Target .NET SDK for the project",
       "datatype": "choice",
-      "replaces": "$(TEMPLATE_TARGET_FRAMEWORK)",
-      "defaultValue": "net8.0",
       "choices": [
         {
-          "choice": "net8.0"
+          "choice": "net10.0"
         }
-      ]
+      ],
+      "replaces": "$(TEMPLATE_TARGET_FRAMEWORK)",
+      "defaultValue": "net10.0"
     },
     "KafkaEnabled": {
       "type": "parameter",
@@ -50,6 +50,12 @@
       "description": "Enable HTTP presentation",
       "datatype": "bool",
       "defaultValue": "false"
+    },
+    "MessagePersistenceEnabled": {
+      "type": "parameter",
+      "description": "Enable MessagePersistence",
+      "datatype": "bool",
+      "defaultValue": "false"
     }
   },
   "sources": [
@@ -58,7 +64,8 @@
         {
           "condition": "(!KafkaEnabled)",
           "exclude": [
-            "src/Presentation/Itmo.Dev.Templates.Hexagonal.Presentation.Kafka/**"
+            "src/Presentation/Itmo.Dev.Templates.Hexagonal.Presentation.Kafka/**",
+            "src/Infrastructure/Itmo.Dev.Templates.Hexagonal.Infrastructure.Kafka/**"
           ]
         },
         {
