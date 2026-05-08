@@ -31,7 +31,7 @@
       "type": "parameter",
       "description": "Enable Kafka presentation",
       "datatype": "bool",
-      "defaultValue": "true"
+      "defaultValue": "false"
     },
     "GrpcEnabled": {
       "type": "parameter",
